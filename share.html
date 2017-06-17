@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+    body {
+        margin: 0;
+        background: darkgray;
+    }
+
+    div.feed {
+        padding: 20px 40px;
+        overflow: auto;
+        background: darkgray;
+    }
+    form {
+        margin: 0;
+        padding: 0;
+        bottom: 0;
+        position: fixed;
+    }
+    input {
+        float: left;
+        display: block;
+        border: none;
+        padding: 12px 40px;
+        font-size: 22px;
+    }
+    @media (max-width: 400px) {
+        div.feed {
+            padding: 10px 20px;
+        }
+        input {
+            padding: 10px 10px;
+        }
+    }
+</style>
+
+<body>
+    <div class="feed"></div>
+    <form>
+        <input class="text-input" placeholder="Message..." required></input>
+    </form>
+
+    <script>
+        var sock = 'ws://localhost:8080/echo';
+        var ws = new WebSocket(sock);
+
+        ws.onopen = function(event) {
+            console.log(sock);
+        }
+
+        var height = window.innerHeight;
+        var width = window.innerWidth;
+        var feed = document.querySelector('div.feed');
+        feed.style.height = height - 90 + "px";
+
+        var input = document.querySelector('input');
+        input.style.width = width + 'px';
+
+        focusLatest()
+
+        var form = document.querySelector('form');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            var text = form.elements[0].value;
+            ws.send(text);
+        })
+
+        ws.onmessage = function(event) {
+            var text = event.data;
+            if (text.startsWith('http')) {
+                var a = document.createElement('a');
+                a.href = text;
+                a.append(text);
+                text = a
+            }
+            var msg = document.createElement('p');
+            msg.append(text);
+            feed.appendChild(msg);
+            focusLatest()
+        }
+
+        function focusLatest() {
+            feed.scrollTop = feed.scrollHeight;
+        }
+    </script>
+</body>
