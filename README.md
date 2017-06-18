@@ -20,3 +20,15 @@ flag.
 Note that the by default the web page will only be accessible to the
 host. To serve it across the local network, specify the host's local IP
 address with the `-s` flag (you can find the address by using `hostname -I`).
+
+### Todo
+
+* Regex search urls within messages
+* Responsive design elements
+* Add file upload feature
+
+### Screenshots
+
+![desktop](https://github.com/ayuopy/share/images/desktop.jpg)
+
+![mobile](https://github.com/ayuopy/share/images/mobile.jpg)
