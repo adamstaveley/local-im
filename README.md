@@ -6,13 +6,13 @@
 
 You can then visit the specified location to begin a new session. Bare in
 mind that share.html points to a WebSocket connection at localhost:8080 (see
-also below). You can change this in share.html (line 45) and by using the `-f`
-flag.
+also below). You can change this in static/client.html (line 1) and by using
+the `-f` flag.
 
 ### Options
 
 ```
--f      specify a HTML file to serve (default: share.html)
+-f      specify a HTML file to serve (default: client.html)
 -s      set a host and port to listen on (default: localhost:8080)
 -h      print help text
 ```
@@ -23,9 +23,8 @@ address with the `-s` flag (you can find the address by using `hostname -I`).
 
 ### Todo
 
-* Regex search urls within messages
-* Responsive design elements
-* Add file upload feature
+* Better esponsive design
+* Add ability to upload files
 
 ### Screenshots
 
