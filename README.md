@@ -28,6 +28,6 @@ address with the `-s` flag (you can find the address by using `hostname -I`).
 
 ### Screenshots
 
-![desktop](https://github.com/ayuopy/share/images/desktop.jpg)
+![desktop](https://github.com/ayuopy/share/blob/master/images/desktop.jpg)
 
-![mobile](https://github.com/ayuopy/share/images/mobile.jpg)
+![mobile](https://github.com/ayuopy/share/blob/master/images/mobile.jpg)
