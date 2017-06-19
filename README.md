@@ -23,7 +23,7 @@ address with the `-s` flag (you can find the address by using `hostname -I`).
 
 ### Todo
 
-* Better esponsive design
+* Better responsive design
 * Add ability to upload files
 
 ### Screenshots
