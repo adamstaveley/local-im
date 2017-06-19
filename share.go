@@ -71,12 +71,15 @@ func htmlHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, *file)
 }
 
-var file = flag.String("f", "share.html", "Specify a HTML file to serve")
+var file = flag.String("f", "client.html", "Specify a HTML file to serve")
 var host = flag.String("s", "localhost:8080", "Set a host and port to listen on")
 
 func main() {
 	flag.Parse()
 	log.Printf("Listening on: %s/share", *host)
+
+	static := http.FileServer(http.Dir("static"))
+	http.Handle("/", static)
 
 	http.HandleFunc("/echo", wsHandler)
 	http.HandleFunc("/share", htmlHandler)
