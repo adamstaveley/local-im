@@ -1,9 +1,16 @@
 package main
 
 import (
+	"crypto/md5"
 	"flag"
+	"fmt"
+	"html/template"
+	"io"
 	"log"
 	"net/http"
+	"os"
+	"strconv"
+	"time"
 
 	"github.com/gorilla/websocket"
 )
@@ -67,21 +74,48 @@ func writeMsg(conn *websocket.Conn, msgType int, msg []byte) {
 	}
 }
 
+func uploadHandler(w http.ResponseWriter, r *http.Request) {
+	log.Println("method:", r.Method)
+	if r.Method == "GET" {
+		crutime := time.Now().Unix()
+		h := md5.New()
+		io.WriteString(h, strconv.FormatInt(crutime, 10))
+		token := fmt.Sprintf("%x", h.Sum(nil))
+		t, _ := template.ParseFiles("upload.gtpl")
+		t.Execute(w, token)
+	} else {
+		r.ParseMultipartForm(32 << 20)
+		file, handler, err := r.FormFile("uploads[]")
+		if err != nil {
+			log.Println("Form error:", err)
+			return
+		}
+		defer file.Close()
+		f, err := os.OpenFile("static/uploads/"+handler.Filename, os.O_WRONLY|os.O_CREATE, 0666)
+		if err != nil {
+			log.Println("File error:", err)
+		}
+		defer f.Close()
+		io.Copy(f, file)
+	}
+}
+
 func htmlHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, *file)
 }
 
 var file = flag.String("f", "client.html", "Specify a HTML file to serve")
-var host = flag.String("s", "localhost:8080", "Set a host and port to listen on")
+var host = flag.String("s", "localhost:8082", "Set a host and port to listen on")
 
 func main() {
 	flag.Parse()
-	log.Printf("Listening on: %s/share", *host)
+	log.Printf("Listening on: %s/message", *host)
 
 	static := http.FileServer(http.Dir("static"))
 	http.Handle("/", static)
 
 	http.HandleFunc("/echo", wsHandler)
-	http.HandleFunc("/share", htmlHandler)
+	http.HandleFunc("/upload", uploadHandler)
+	http.HandleFunc("/message", htmlHandler)
 	http.ListenAndServe(*host, nil)
 }

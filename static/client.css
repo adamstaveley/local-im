@@ -53,6 +53,7 @@ td.name {
 td.message {
     vertical-align: top;
     padding-left: 10px;
+    width: 100%;
 }
 
 /* MENU AND TEXT INPUT BAR */
@@ -88,6 +89,12 @@ input.text-input {
 }
 input:required {
     box-shadow: none;
+}
+
+
+/* MISC */
+input:focus {
+    outline: none;
 }
 
 /* MOBILE SETTINGS */
