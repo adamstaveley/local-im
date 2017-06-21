@@ -23,11 +23,14 @@ address with the `-s` flag (you can find the address by using `hostname -I`).
 
 ### Todo
 
+* Store set name in local storage
 * Better responsive design
 * Add ability to upload files
 
 ### Screenshots
 
-![desktop](https://github.com/ayuopy/share/blob/master/images/desktop.jpg)
+![desktop](https://github.com/ayuopy/share/blob/master/screenshots/desktop.jpg)
+Desktop
 
-![mobile](https://github.com/ayuopy/share/blob/master/images/mobile.jpg)
+![mobile](https://github.com/ayuopy/share/blob/master/screenshots/mobile.jpg)
+Mobile

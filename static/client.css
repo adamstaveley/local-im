@@ -3,89 +3,107 @@ body {
     background: #2e4057;
 }
 
+/* OPTIONS POP UP HAMBURGER MENU */
+div.options {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    margin-left: 5px;
+    margin-bottom: 60px;
+    display: none;
+}
+input.name-input, input.file-input {
+    font-size: 16px;
+    padding: 10px 10px;
+    border: solid 2px #99c24d;
+    border-radius: 5px 5px 5px 5px;
+    width: 100%;
+}
+input.file-input {
+    margin-top: 5px;
+    font-size: 12px;
+    width: 100%;
+    background: white;
+}
+
+/* MESSAGE FEED */
 div.feed {
     overflow: auto;
     background: #2e4057;
 }
-table {
+a {
+    color: #99c24d;
+}
+table.feed {
     color: white;
     border-style: hidden;
     border-collapse: collapse;
     margin: 20px 40px;
 }
-td {
-    vertical-align: top;
-    padding: 5px 0;
+table.feed tr:hover {
+    background: #425367;
 }
-table td + td {
+table.feed td + td {
     border-left: 2px solid #99c24d;
 }
 td.name {
+    vertical-align: top;
     padding-right: 10px;
 }
 td.message {
+    vertical-align: top;
     padding-left: 10px;
 }
-ul {
-    margin: 0;
-    padding: 0;
-    bottom: 0;
-    position: fixed;
-    background: white;
+
+/* MENU AND TEXT INPUT BAR */
+table.text-input {
     border-top: solid 5px #99c24d;
     width: 100%;
-    height: 50px;
+    bottom: 0;
+    position: fixed;
+    overflow: hidden;
+    background: white;
 }
-li {
-    float: left;
-    display: block;
-}
-li.menu {
-    float: right;
-    padding: 0 10px;
-    padding-top: 5px;
-    height: 55px;
+
+td.menu {
+    width: 55px;
+    text-align: center;
+    padding-left: 10px;
     cursor: pointer;
 }
+
 div.menu {
     width: 35px;
     height: 5px;
     background-color: #2e4057;
-    margin: 6px 0;
+    margin: 5px 0;
 }
+
 input.text-input {
-    float: left;
-    display: block;
     border: none;
     border-radius: 0;
-    padding: 12px 40px;
-    font-size: 22px;
-    width: 85vw;
-    overflow: hidden;
-}
-input.name-input {
-    z-index: 1;
-    position: absolute;
-    right: 0;
-    font-size: 16px;
     padding: 10px 10px;
-    display: none;
-    border: none;
-    border-bottom: solid 5px #99c24d;
-    border-radius: 0;
+    font-size: 20px;
+    width: 100%;
 }
 input:required {
     box-shadow: none;
 }
+
+/* MOBILE SETTINGS */
 @media (max-width: 500px) {
-    table {
+    table.feed {
         margin: 10px 10px;
     }
-    input {
-        padding: 10px 10px;
+    td.menu {
+        width: 35px;
     }
-    input.text-input {
-        padding: 10px 10px;
-        width: 75vw;
+    div.menu {
+        width: 30px;
+        margin: 3px;
+    }
+    input {
+        font-size: 16px;
+        padding: 0;
     }
 }
