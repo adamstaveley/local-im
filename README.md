@@ -62,5 +62,5 @@ $ go build message.go
 
 ## Screenshot
 
-![main](https://github.com/ayuopy/local-im/blob/master/screenshots/main.png)
+![main](https://github.com/ayuopy/local-im/blob/master/resources/main.png)
 
