@@ -1,7 +1,14 @@
 body {
     margin: 0;
-    background: #2e4057;
+    background: #26262d;
 }
+
+
+/* FONTS */
+body, input {
+    font-family: Ubuntu, Roboto, 'Liberation Sans', Arial, Helvetica, sans-serif;
+}
+
 
 /* OPTIONS POP UP HAMBURGER MENU */
 div.options {
@@ -9,39 +16,38 @@ div.options {
     left: 0;
     bottom: 0;
     margin-left: 5px;
-    margin-bottom: 60px;
+    margin-bottom: 57px;
     display: none;
 }
+
 input.name-input, input.file-input {
     font-size: 16px;
     padding: 10px 10px;
-    border: solid 2px #99c24d;
-    border-radius: 5px 5px 5px 5px;
+    border: solid 1px #26262d;
+    border-radius: 5px;
     width: 100%;
+    background: #474350;
+    color: #f8fff4;
 }
 input.file-input {
-    margin-top: 5px;
     font-size: 12px;
     width: 100%;
-    background: white;
 }
 
 /* MESSAGE FEED */
 div.feed {
     overflow: auto;
-    background: #2e4057;
-}
-a {
-    color: #99c24d;
+    background: #26262d;
 }
 table.feed {
-    color: white;
+    color: #f8fff4;
     border-style: hidden;
     border-collapse: collapse;
     margin: 20px 40px;
+    font-size: 16px;
 }
 table.feed tr:hover {
-    background: #425367;
+    background: #474350;
 }
 table.feed td + td {
     border-left: 2px solid #99c24d;
@@ -54,6 +60,14 @@ td.message {
     vertical-align: top;
     padding-left: 10px;
     width: 100%;
+    overflow-x: hidden;
+}
+a {
+    color: #99c24d;
+}
+img {
+    padding-top: 3px;
+    max-height: 100px;
 }
 
 /* MENU AND TEXT INPUT BAR */
@@ -63,29 +77,29 @@ table.text-input {
     bottom: 0;
     position: fixed;
     overflow: hidden;
-    background: white;
+    background: #474350;
 }
 
 td.menu {
     width: 55px;
-    text-align: center;
-    padding-left: 10px;
     cursor: pointer;
 }
 
 div.menu {
     width: 35px;
     height: 5px;
-    background-color: #2e4057;
+    background-color: #f8fff4;
     margin: 5px 0;
 }
 
 input.text-input {
     border: none;
     border-radius: 0;
-    padding: 10px 10px;
+    padding: 10px 10px 7px 10px;
     font-size: 20px;
     width: 100%;
+    background: #474350;
+    color: #f8fff4;
 }
 input:required {
     box-shadow: none;
@@ -97,17 +111,14 @@ input:focus {
     outline: none;
 }
 
+
 /* MOBILE SETTINGS */
 @media (max-width: 500px) {
     table.feed {
         margin: 10px 10px;
     }
-    td.menu {
-        width: 35px;
-    }
-    div.menu {
-        width: 30px;
-        margin: 3px;
+    input.text-input {
+        padding-left: 0px;
     }
     input {
         font-size: 16px;

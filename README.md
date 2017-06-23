@@ -1,14 +1,31 @@
-## Send messages and files over a local network
+# Local IM
 
-### Usage
+![Icon](https://github.com/ayuopy/local-im/blob/master/resources/icon.png)
 
-`$ go run share.go [OPTION]`
+### Send messages and files over a local network
 
-You can then visit the specified location to begin a new session.
+## Features
 
-Binaries coming soon.
+* Instant messaging via websockets
+* URL parsing with linkifyjs
+* File uploads
+* Image thumbnails
+* Responsive client
 
-### Options
+## Usage
+
+Download the relavant binary for your system [here](https://github.com/ayuopy/local-im/releases).
+
+```
+$ ./message [OPTION]
+```
+
+You can then visit the specified host to begin a new session. By default, the message
+server will listen on the localhost, which will not be broadcast to other devices on the
+network. Use `hostname -I` to find the relevant host for your
+system.
+
+## Options
 
 ```
 -f      specify a HTML file to serve (default: client.html)
@@ -16,10 +33,34 @@ Binaries coming soon.
 -h      print help text
 ```
 
-### Screenshots
+## Building from source
 
-![desktop](https://github.com/ayuopy/share/blob/master/screenshots/desktop.jpg)
-Desktop
+Dependencies:
+* go (tested and built with v1.7.6)
+* [github.com/gorilla/websocket](https://github.com/gorilla/websocket)
+* npm
+* [linkifyjs](https://github.com/SoapBox/linkifyjs)
 
-![mobile](https://github.com/ayuopy/share/blob/master/screenshots/mobile.jpg)
-Mobile
+Ensure your GOPATH is configured and you are in $GOPATH/src.
+
+```
+$ git clone https://github.com/ayuopy/local-im.git
+$ cd local-im
+```
+
+Install dependencies:
+```
+$ go get github.com/gorilla/websocket
+$ cd static
+$ npm install linkifyjs
+```
+
+Build:
+```
+$ go build message.go
+```
+
+## Screenshot
+
+![main](https://github.com/ayuopy/local-im/blob/master/screenshots/main.png)
+
